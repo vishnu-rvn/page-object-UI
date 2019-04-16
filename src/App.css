@@ -1,0 +1,94 @@
+body{
+    margin: 0px;
+}
+
+.container{
+    width: 70%;
+    max-width: 896px;
+    margin: auto;
+}
+
+#heading{
+    flex-grow: 8;
+}
+#heading h1{
+    margin: 0;
+}
+
+.flex-container{
+    display: flex;
+    width: 99.8%;
+}
+
+#settings{
+    flex-grow: 1;
+}
+
+.add-button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px; 
+}
+
+#object-map{
+    font-family: 'Cousine', monospace;
+    font-size: 12px;
+    
+}
+
+.options-glyph {
+    padding: 0px;
+    border: none;
+    background-color: none;
+}
+
+#settings-button {
+    outline: none;
+    background-color: white;
+    border: none;
+    float: right;
+}
+
+.elements-button-gp {
+    justify-content: flex-end;
+}
+
+.header {
+    margin: 20px 0px;
+}
+
+.show-image-button{
+    border: none;
+    background-color: rgb(255, 255, 255, 0);
+    padding: 0;
+}
+
+.dropdown-menu {
+    left: -130px;
+}
+
+.custom-image-modal{
+    width: 90%;
+}
+
+.step-element-row {
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+}
+
+.step-element-row select {
+    margin-bottom: 2px;
+}
+
+.bx--overflow-menu__icon{
+    transform: rotate(90deg);
+}
+
+.bx--responsive-table-container{
+    width: 100%;
+}
+
+#notification-div {
+    display: none;
+}
