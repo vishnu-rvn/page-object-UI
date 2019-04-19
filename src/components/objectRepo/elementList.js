@@ -67,7 +67,7 @@ class ElementList extends Component {
         ).then(
             data => {
                 this.setState({
-                    items: data.data
+                    items: data
                 })
             }
         )
@@ -121,6 +121,20 @@ class ElementList extends Component {
             }
         )
     }
+    findElement = () => {
+        const url = "http://127.0.0.1:5000/find_element"
+        fetch(url, {
+            method: "GET"
+        }).then(
+            response => {
+                return response.json()
+            }
+        ).then(
+            data => {
+                console.log(data)
+            }
+        )
+    }
     componentDidMount() {
         this.refresh()
     };
@@ -154,6 +168,9 @@ class ElementList extends Component {
                     </FormGroup>
                     <FormGroup>
                         <TextInput name="selector" id="selector" required labelText="Selector"/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Button>Find</Button>
                     </FormGroup>
                     <FormGroup>
                         <Select name="selector-type" id="selector-type">
