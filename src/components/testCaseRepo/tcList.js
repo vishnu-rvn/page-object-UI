@@ -44,7 +44,6 @@ class TestCaseList extends Component {
         let tc_delete_modal = (
             <Modal primaryButtonText="Delete"
                    className="bx--modal--danger"
-                   danger="true"
                    secondaryButtonText="Close"
                    onSecondarySubmit={() => this.closeModal("tc_delete_modal")}
                    onRequestClose={() => this.closeModal("tc_delete_modal")}
@@ -54,18 +53,17 @@ class TestCaseList extends Component {
         )
         let tc_add_modal = (
             <Modal primaryButtonText="Add"
-                   buttonTriggerText="Add TC"
                    secondaryButtonText="Close"
                    modalHeading="Add Testcase"
                    open={this.state.tc_add_modal}
                    onSecondarySubmit={() => this.closeModal("tc_add_modal")}
                    onRequestClose={() => this.closeModal("tc_add_modal")}>
                 <Form id="tcadd-form" encType="mutipart/form-data">
-                    <FormGroup>
+                    <FormGroup legendText="TC Name">
                         <TextInput name="name" id="tc-name" required labelText="TC Name"/>
                     </FormGroup>
-                    <FormGroup>
-                        <NumberInput name="id" id="tc-id" required labelText="TC ID"/>
+                    <FormGroup legendText="TC ID">
+                        <NumberInput name="id" id="tc-id" required/>
                     </FormGroup>
                 </Form>
             </Modal>

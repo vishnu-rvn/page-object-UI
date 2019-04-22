@@ -92,3 +92,7 @@ body{
 #notification-div {
     display: none;
 }
+
+#driver-error{
+    display: None;
+}

@@ -131,6 +131,22 @@ class ElementList extends Component {
             }
         ).then(
             data => {
+                if (data === "error"){
+                    document.getElementById("driver-error").style.display = "block"
+                }
+            }
+        )
+    }
+    launchDriver = (event) => {
+        const url= "http://127.0.0.1:5000/launch_driver"
+        fetch(url, {
+            method: "GET"
+        }).then(
+            response => {
+                response.json()
+            }
+        ).then(
+            data => {
                 console.log(data)
             }
         )
@@ -148,31 +164,33 @@ class ElementList extends Component {
                    onSecondarySubmit={() => this.closeModal("dialog_modal_show")}
                    onRequestClose={() => this.closeModal("dialog_modal_show")}
                    open={this.state.dialog_modal_show}
-                   className="bx--modal--danger"
-                   danger="true">
+                   className="bx--modal--danger">
                 <p>Do you want to delete the element?</p>
             </Modal>
         )
         let element_add_modal = (
             <Modal primaryButtonText="Add" 
-                   buttonTriggerText="Add Element" 
+                   buttontriggertext="Add Element" 
                    secondaryButtonText="Close"
                    modalHeading="Add New Element" 
                    onRequestSubmit={this.submitElementData} 
                    open={this.state.modal_show}
                    onSecondarySubmit={() => this.closeModal("modal_show")} 
                    onRequestClose={() => this.closeModal("modal_show")}>
+                <div id="driver-error">
+                    <p>Uh Oh, no driver launched. Click <button onClick={() => this.launchDriver()}>here</button> to launch a driver</p>
+                </div>
                 <Form id="element-form" encType="multipart/form-data">
-                    <FormGroup>
-                        <TextInput name="name" id="name" required labelText="Name"/>
+                    <FormGroup legendText="Name">
+                        <TextInput name="name" id="name" required labelText=""/>
                     </FormGroup>
-                    <FormGroup>
-                        <TextInput name="selector" id="selector" required labelText="Selector"/>
+                    <FormGroup legendText="Selector">
+                        <TextInput name="selector" id="selector" required labelText=""/>
                     </FormGroup>
-                    <FormGroup>
-                        <Button>Find</Button>
+                    <FormGroup legendText="">
+                        <Button onClick={() => this.findElement()}>Find</Button>
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup legendText="">
                         <Select name="selector-type" id="selector-type">
                             <SelectItem hidden value="placeholder-item" text="Choose an Item"/>
                             <SelectItem value="xpath" text="xpath"/>
@@ -181,8 +199,8 @@ class ElementList extends Component {
                             <SelectItem value="name" text="name"/>
                         </Select>
                     </FormGroup>
-                    <FormGroup>
-                        <TextInput name="page" id="page" required labelText="Page"/>
+                    <FormGroup legendText="Page">
+                        <TextInput name="page" id="page" required labelText=""/>
                     </FormGroup>
                     
                 </Form>
